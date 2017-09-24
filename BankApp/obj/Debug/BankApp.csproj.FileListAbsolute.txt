@@ -1,0 +1,6 @@
+D:\Project\CSharp\BankApp\BankApp\bin\Debug\BankApp.exe.config
+D:\Project\CSharp\BankApp\BankApp\bin\Debug\BankApp.exe
+D:\Project\CSharp\BankApp\BankApp\bin\Debug\BankApp.pdb
+D:\Project\CSharp\BankApp\BankApp\obj\Debug\BankApp.csprojResolveAssemblyReference.cache
+D:\Project\CSharp\BankApp\BankApp\obj\Debug\BankApp.exe
+D:\Project\CSharp\BankApp\BankApp\obj\Debug\BankApp.pdb
