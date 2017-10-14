@@ -4,3 +4,13 @@ D:\Project\CSharp\BankApp\BankApp\bin\Debug\BankApp.pdb
 D:\Project\CSharp\BankApp\BankApp\obj\Debug\BankApp.csprojResolveAssemblyReference.cache
 D:\Project\CSharp\BankApp\BankApp\obj\Debug\BankApp.exe
 D:\Project\CSharp\BankApp\BankApp\obj\Debug\BankApp.pdb
+D:\Github\BankApp\BankApp\bin\Debug\BankApp.exe.config
+D:\Github\BankApp\BankApp\bin\Debug\BankApp.exe
+D:\Github\BankApp\BankApp\bin\Debug\BankApp.pdb
+D:\Github\BankApp\BankApp\obj\Debug\BankApp.csprojResolveAssemblyReference.cache
+D:\Github\BankApp\BankApp\obj\Debug\BankApp.exe
+D:\Github\BankApp\BankApp\obj\Debug\BankApp.pdb
+D:\Github\BankApp\BankApp\bin\Debug\EntityFramework.dll
+D:\Github\BankApp\BankApp\bin\Debug\EntityFramework.SqlServer.dll
+D:\Github\BankApp\BankApp\bin\Debug\EntityFramework.xml
+D:\Github\BankApp\BankApp\bin\Debug\EntityFramework.SqlServer.xml
