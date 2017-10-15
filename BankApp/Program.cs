@@ -21,6 +21,7 @@ namespace BankApp
                 Console.WriteLine("2. Deposit");
                 Console.WriteLine("3. Withdraw");
                 Console.WriteLine("4. Print all accounts");
+                Console.WriteLine("5. Print all transactions");
 
                 var choice = Console.ReadLine();
                 switch(choice)
@@ -45,18 +46,38 @@ namespace BankApp
                         break;
 
                     case "2":
+                        PrintAllAccounts();
+                        Console.Write("Account number:");
+                        var accountNumber = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("amount to deposit:");  
+                        amount = Convert.ToDecimal(Console.ReadLine());
+                        Bank.Deposit(accountNumber, amount);
+                        Console.WriteLine("Deposit was successfull");
                         break;
 
                     case "3":
+                        PrintAllAccounts();
+                        Console.Write("Account number:");
+                        accountNumber = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("amount to deposit:");
+                        amount = Convert.ToDecimal(Console.ReadLine());
+                        Bank.Withdraw(accountNumber, amount);
+
+                        Console.WriteLine("Withdrawl was sussesfull");
                         break;
 
                     case "4":
-                        Console.Write("Email Address: ");
-                        emailAddress = Console.ReadLine();
-                        var accounts = Bank.getAllAccounts(emailAddress);
-                        foreach(var item in accounts)
+                        PrintAllAccounts();
+                        break;
+                    
+                    case "5":
+                        PrintAllAccounts();
+                        Console.Write("Account number:");
+                        accountNumber = Convert.ToInt32(Console.ReadLine());
+                        var transactions = Bank.GetAllTransactions(accountNumber);
+                        foreach(var tran in transactions)
                         {
-                            Console.WriteLine($"AN: {item.AccountNumber}, AT: {item.AccountType}; Balance: {item.Balance:C}, Created Date: {item.CreatedDate}");
+                            Console.WriteLine($"Id:(tran.TransactionId), Date:{tran.TypeOfTransaction}, Amount:{tran.Amount: C}, Description:{tran.Description}");
                         }
                         break;
 
@@ -65,6 +86,17 @@ namespace BankApp
 
                 }
 
+            }
+        }
+
+        private static void PrintAllAccounts()
+        {
+            Console.Write("Email Address: ");
+            var emailAddress = Console.ReadLine();
+            var accounts = Bank.getAllAccounts(emailAddress);
+            foreach (var item in accounts)
+            {
+                Console.WriteLine($"AN: {item.AccountNumber}, AT: {item.AccountType}; Balance: {item.Balance:C}, Created Date: {item.CreatedDate}");
             }
         }
     }

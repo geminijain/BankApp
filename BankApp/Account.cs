@@ -45,6 +45,8 @@ namespace BankApp
         // this holds the date of account created
         public DateTime CreatedDate { get; set; }
 
+        public virtual ICollection<Transaction> Transactions { get; set; }
+
         #endregion
 
         #region Constructors
