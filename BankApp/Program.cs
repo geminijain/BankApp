@@ -36,34 +36,33 @@ namespace BankApp
                         var accountTypes = Enum.GetNames(typeof(TypeOfAccount));
                         for(var i =0; i < accountTypes.Length; i++)
                         {
-                            Console.WriteLine($"{i} : {accountTypes[i]}");
+                            Console.WriteLine($"{i}. {accountTypes[i]}");
                         }
                         var accountType = (TypeOfAccount)Enum.Parse(typeof(TypeOfAccount), Console.ReadLine());
                         Console.Write("Amount to deposit: ");
                         var amount = Convert.ToDecimal(Console.ReadLine());
                         var account = Bank.CreateAccount(emailAddress, accountType, amount);
-                        Console.WriteLine($"AN: {account.AccountNumber}, AT: {account.AccountType}, Balance: {account.Balance: C}, Created Date: {account.CreatedDate}");
+                        Console.WriteLine($"AN: {account.AccountNumber}, AT: {account.AccountType}, Balance: {account.Balance:C}, Created Date: {account.CreatedDate}");
                         break;
 
                     case "2":
                         PrintAllAccounts();
                         Console.Write("Account number:");
                         var accountNumber = Convert.ToInt32(Console.ReadLine());
-                        Console.Write("amount to deposit:");  
+                        Console.Write("amount to deposit: ");  
                         amount = Convert.ToDecimal(Console.ReadLine());
                         Bank.Deposit(accountNumber, amount);
-                        Console.WriteLine("Deposit was successfull");
+                        Console.WriteLine("Deposit was successful !");
                         break;
 
                     case "3":
                         PrintAllAccounts();
                         Console.Write("Account number:");
                         accountNumber = Convert.ToInt32(Console.ReadLine());
-                        Console.Write("amount to deposit:");
+                        Console.Write("amount to withdraw: ");
                         amount = Convert.ToDecimal(Console.ReadLine());
                         Bank.Withdraw(accountNumber, amount);
-
-                        Console.WriteLine("Withdrawl was sussesfull");
+                        Console.WriteLine("Withdrawl was sussesful !");
                         break;
 
                     case "4":
@@ -77,7 +76,7 @@ namespace BankApp
                         var transactions = Bank.GetAllTransactions(accountNumber);
                         foreach(var tran in transactions)
                         {
-                            Console.WriteLine($"Id:(tran.TransactionId), Date:{tran.TypeOfTransaction}, Amount:{tran.Amount: C}, Description:{tran.Description}");
+                            Console.WriteLine($"Id:{tran.TransactionId}, Date:{tran.TransactionDate}, Type: {tran.TypeOfTransaction}, Amount:{tran.Amount:C}, Description:{tran.Description}");
                         }
                         break;
 
@@ -93,10 +92,10 @@ namespace BankApp
         {
             Console.Write("Email Address: ");
             var emailAddress = Console.ReadLine();
-            var accounts = Bank.getAllAccounts(emailAddress);
+            var accounts = Bank.GetAllAccounts(emailAddress);
             foreach (var item in accounts)
             {
-                Console.WriteLine($"AN: {item.AccountNumber}, AT: {item.AccountType}; Balance: {item.Balance:C}, Created Date: {item.CreatedDate}");
+                Console.WriteLine($"AN: {item.AccountNumber}, AT: {item.AccountType}, Balance: {item.Balance:C}, Created Date: {item.CreatedDate}");
             }
         }
     }

@@ -34,7 +34,7 @@ namespace BankApp
             return account;
         }
 
-        public static List<Account> getAllAccounts(string emailAddress)
+        public static List<Account> GetAllAccounts(string emailAddress)
         {
             return db.Accounts.Where(a => a.EmailAddress == emailAddress).ToList();
             
@@ -42,7 +42,7 @@ namespace BankApp
 
         public static void Deposit(int accountNumber, decimal amount)
         {
-            var account = db.Accounts.Where(a => a.AccountNumber == accountNumber).FirstOrDefault():
+            var account = db.Accounts.Where(a => a.AccountNumber == accountNumber).FirstOrDefault();
             if(account == null)
             return;
 
@@ -61,7 +61,28 @@ namespace BankApp
             db.SaveChanges();
         }
 
-        public static List<Transaction> GetAllTransaction(int accountNumber)
+        public static void Withdraw(int accountNumber, decimal amount)
+        {
+            var account = db.Accounts.Where(a => a.AccountNumber == accountNumber).FirstOrDefault();
+            if (account == null)
+                return;
+
+            account.Withdraw(amount);
+
+            var transaction = new Transaction
+            {
+                TransactionDate = DateTime.UtcNow,
+                TypeOfTransaction = TransactionType.Debit,
+                Description = "Branch Withdrawl",
+                Amount = amount,
+                AccountNumber = account.AccountNumber
+            };
+            db.Transactions.Add(transaction);
+
+            db.SaveChanges();
+        }
+
+        public static List<Transaction> GetAllTransactions(int accountNumber)
         {
             return db.Transactions.Where(t => t.AccountNumber == accountNumber).OrderByDescending(t => t.TransactionDate).ToList();
 
