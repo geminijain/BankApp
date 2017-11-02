@@ -36,3 +36,4 @@ D:\Github\BankApp\BankApp\obj\Debug\BankApp.Migrations.Transactions.resources
 D:\Github\BankApp\BankApp\obj\Debug\BankApp.csproj.GenerateResource.Cache
 D:\Github\BankApp\BankApp\obj\Debug\BankApp.dll
 D:\Github\BankApp\BankApp\obj\Debug\BankApp.pdb
+D:\Github\BankApp\BankApp\obj\Debug\BankApp.csprojResolveAssemblyReference.cache

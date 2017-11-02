@@ -20,9 +20,7 @@ namespace BankApp
     /// </summary>
     public class Account
     {
-        private static int lastAccountNumber = 0;
-
-
+        
         #region Properties
         /// <summary>
         /// This holds the account number
@@ -43,7 +41,7 @@ namespace BankApp
         public TypeOfAccount AccountType { get; set; }
 
         // this holds the date of account created
-        public DateTime CreatedDate { get; set; }
+        public DateTime CreatedDate { get; private set; }
 
         public virtual ICollection<Transaction> Transactions { get; set; }
 
@@ -51,9 +49,7 @@ namespace BankApp
 
         #region Constructors
         public Account()
-        {
-            AccountNumber = ++lastAccountNumber;
-            CreatedDate = DateTime.UtcNow;
+        {  CreatedDate = DateTime.UtcNow;
         }
 
 
