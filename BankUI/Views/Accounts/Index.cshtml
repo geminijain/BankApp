@@ -43,7 +43,8 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.AccountNumber }) |
             @Html.ActionLink("Details", "Details", new { id=item.AccountNumber }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AccountNumber })
+            @Html.ActionLink("Deposit", "Deposit", new { id=item.AccountNumber }) |
+            @Html.ActionLink("Withdraw", "Withdraw", new { id = item.AccountNumber }) |
         </td>
     </tr>
 }

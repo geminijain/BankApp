@@ -34,6 +34,14 @@ namespace BankApp
             return account;
         }
 
+        public static void EditAccount(Account account)
+        {
+            var oldAccount = GetAccountByAccountNumber(account.AccountNumber);
+            db.Entry(oldAccount).State = System.Data.Entity.EntityState.Modified;
+            oldAccount.AccountType = account.AccountType;
+            db.SaveChanges();
+        }
+
         public static List<Account> GetAllAccounts(string emailAddress)
         {
             return db.Accounts.Where(a => a.EmailAddress == emailAddress).ToList();
@@ -91,7 +99,7 @@ namespace BankApp
             db.SaveChanges();
         }
 
-        private static Account GetAccountByAccountNumber(int accountNumber)
+        public static Account GetAccountByAccountNumber(int accountNumber)
         {
             var account = db.Accounts.Where(a => a.AccountNumber == accountNumber).FirstOrDefault();
             if (account == null)
