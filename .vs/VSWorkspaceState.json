@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\BankApp",
+    "\\BankUI\\Models"
   ],
+  "SelectedNode": "\\BankApp.sln",
   "PreviewInSolutionExplorer": false
 }
