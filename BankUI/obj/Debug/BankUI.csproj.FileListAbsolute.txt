@@ -199,3 +199,6 @@ C:\Github\BankApp\BankUI\obj\Debug\BankUI.dll
 C:\Github\BankApp\BankUI\obj\Debug\BankUI.pdb
 C:\Github\BankApp\BankUI\obj\Debug\BankUI.Migrations.NewMigration.resources
 C:\Github\BankApp\BankUI\obj\Debug\BankUI.csproj.GenerateResource.Cache
+D:\Github\BankApp\BankUI\obj\Debug\BankUI.Migrations.NewMigration.resources
+D:\Github\BankApp\BankUI\obj\Debug\BankUI.csproj.GenerateResource.Cache
+D:\Github\BankApp\BankUI\obj\Debug\BankUI.csproj.CoreCompileInputs.cache
