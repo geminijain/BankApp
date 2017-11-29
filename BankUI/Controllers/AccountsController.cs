@@ -12,13 +12,14 @@ namespace BankUI.Controllers
 {
     public class AccountsController : Controller
     {
-        private BankModel db = new BankModel();
-
+        public string UserName { get; set; }
         // GET: Accounts
         [Authorize]
         public ActionResult Index()
         {
-            return View(Bank.GetAllAccounts(HttpContext.User.Identity.Name));
+            if (HttpContext != null && !string.IsNullOrEmpty(HttpContext.User.Identity.Name))
+                UserName = HttpContext.User.Identity.Name;
+            return View(Bank.GetAllAccounts(UserName));
         }
 
         // GET: Accounts/Details/5
@@ -49,6 +50,7 @@ namespace BankUI.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "AccountNumber,EmailAddress,Balance,AccountType,CreatedDate")] Account account)
         {
             account.EmailAddress = HttpContext.User.Identity.Name;
@@ -69,8 +71,8 @@ namespace BankUI.Controllers
                 Account account = Bank.GetAccountByAccountNumber(id.Value);
                 return View(account);
             }
-            catch(InvalidAccountException ax)
-            {   
+            catch (InvalidAccountException ax)
+            {
                 Session["ErrorMessage"] = ax.Message;
                 throw;
             }
@@ -84,15 +86,14 @@ namespace BankUI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "AccountNumber,EmailAddress,Balance,AccountType,CreatedDate")] Account account)
         {
-                Bank.EditAccount(account);
-                return RedirectToAction("Index");
-             
+            Bank.EditAccount(account);
+            return RedirectToAction("Index");
         }
 
         [Authorize]
         public ActionResult Deposit(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -102,12 +103,14 @@ namespace BankUI.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Deposit(FormCollection controls)
         {
             var accountNumber = Convert.ToInt32(controls["AccountNumber"]);
             var amount = Convert.ToDecimal(controls["Amount"]);
             Bank.Deposit(accountNumber, amount);
             return RedirectToAction("Index");
+
         }
 
         [Authorize]
@@ -123,22 +126,24 @@ namespace BankUI.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Withdraw(FormCollection controls)
         {
             var accountNumber = Convert.ToInt32(controls["AccountNumber"]);
             var amount = Convert.ToDecimal(controls["Amount"]);
             Bank.Withdraw(accountNumber, amount);
             return RedirectToAction("Index");
+
         }
 
         [Authorize]
         public ActionResult Transactions(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
             }
+
             var transactions = Bank.GetAllTransactions(id.Value);
             return View(transactions);
         }

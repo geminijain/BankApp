@@ -81,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AccountsControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
@@ -91,6 +92,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BankApp\BankApp.csproj">
+      <Project>{82871780-245a-4f00-86d3-0ce1f0915091}</Project>
+      <Name>BankApp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BankUI\BankUI.csproj">
       <Project>{4DC375CD-41FE-45AA-9C3F-5832A2FE3E64}</Project>
       <Name>BankUI</Name>
